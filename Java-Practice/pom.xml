@@ -14,6 +14,61 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- MyBatis -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.5.14</version>
+    </dependency>
+    <!-- Spring Context (ComponentScan, Bean, Configuration) -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>6.1.6</version>
+    </dependency>
+    <!-- Spring Core (必要に応じて) -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>6.1.6</version>
+    </dependency>
+    <!-- Spring JDBC -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>6.1.6</version>
+    </dependency>
+    <!-- Spring Transaction -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>6.1.6</version>
+    </dependency>
+    <!-- Spring Transaction Annotation -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>6.1.6</version>
+    </dependency>
+    <!-- MyBatis Spring -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+    <!-- MyBatis -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.5.14</version>
+    </dependency>
+    <!-- PostgreSQL JDBC Driver -->
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.7.3</version>
+        <scope>runtime</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>Java-Practice</finalName>
