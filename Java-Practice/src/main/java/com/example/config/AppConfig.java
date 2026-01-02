@@ -5,9 +5,11 @@ import javax.sql.DataSource;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -42,5 +44,13 @@ public class AppConfig {
 		sessionFactoryBean.setConfigLocation(new ClassPathResource("/mybatis-config.xml"));
 		return sessionFactoryBean;
 	}
+	
+	@Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
+        ms.setBasename("message");
+        ms.setDefaultEncoding("UTF-8");
+        return ms;
+    }
 	
 }
