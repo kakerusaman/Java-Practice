@@ -12,5 +12,6 @@
       </typeAliases>
       <mappers>
           <mapper resource="mapper/SettingsMapper.xml"/>
+          <mapper resource="mapper/UserMapper.xml"/>
       </mappers>
   </configuration>

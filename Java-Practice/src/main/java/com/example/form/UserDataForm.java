@@ -2,25 +2,25 @@ package com.example.form;
 
 public class UserDataForm {
 
-    private String loginName;
+    private String userId;
 
-    private String passWord;
+    private String password;
 
 
-    public String getLoginName(){
-        return loginName;
+    public String getUserId(){
+        return userId;
     }
 
-    public void setLoginName(String loginName){
-        this.loginName = loginName;
+    public void setUserId(String userId){
+        this.userId = userId;
     }
 
-    public String getPassWord(){
-        return passWord;
+    public String getPassword(){
+        return password;
     }
 
-    public void setPassWord(String passWord){
-        this.passWord = passWord;
+    public void setPassword(String password){
+        this.password = password;
     }
     
 }

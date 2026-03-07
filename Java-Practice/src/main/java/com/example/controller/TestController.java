@@ -26,5 +26,6 @@ public class TestController {
 		List<Settings> settings = settingsMapper.findAll();
 		System.out.println(settings.get(0));
 		return "validation";
+	
 	}
 }

@@ -1,14 +1,22 @@
 package com.example.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.example.form.UserDataForm;
+import com.example.service.UserService;
+import com.example.model.UserData;
+
+import jakarta.servlet.http.HttpSession;
 
 
 
 @Controller
 public class LoginController {
+
+    @Autowired
+    UserService userService;
     
     @GetMapping("/login")
     public String login(){
@@ -16,12 +24,17 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(UserDataForm form) {
+    public String login(UserDataForm form, HttpSession session) {
         //エラーだったらログイン画面に遷移
-        System.out.println(form.getLoginName());
-        System.out.println(form.getPassWord());
+
+        UserData userdata = userService.checkLoginData(form.getUserId(),form.getPassword());
+        if (userdata != null){
+            System.out.println("syoriseikou");
+        } else {
+            System.out.println("kubiokasiihito");
+        }
         
-        return "mypage";
+        return "redirect:/mypage";
     }
     
 }
