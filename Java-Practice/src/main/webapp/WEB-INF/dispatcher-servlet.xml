@@ -17,6 +17,7 @@
     
     <!-- Spring MVC の有効化 -->
     <mvc:annotation-driven />
+    <mvc:resources mapping="/css/**" location="/css/" />
     
     <!-- ビューリゾルバの例 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
