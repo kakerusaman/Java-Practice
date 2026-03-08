@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.mapper.UserMapper;
@@ -13,5 +15,9 @@ public class UserService {
 
     public UserData checkLoginData(String userId, String password){
         return userMapper.findByLoginIdAndPassword(userId, password);
+    }
+
+    public List<UserData> findAll(){
+        return userMapper.findAll();
     }
 }

@@ -6,4 +6,8 @@
     <select id="findByLoginIdAndPassword" resultType="com.example.model.UserData">
         SELECT * FROM t_user_info where user_id = #{userId} AND user_password = #{password};
     </select>
+    <select id="findAll" resultType="com.example.model.UserData">
+        SELECT * FROM t_user_info;
+    </select>
 </mapper>
+    
