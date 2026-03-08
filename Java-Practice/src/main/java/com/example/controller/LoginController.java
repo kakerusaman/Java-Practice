@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +30,10 @@ public class LoginController {
         //エラーだったらログイン画面に遷移
 
         UserData userdata = userService.checkLoginData(form.getUserId(),form.getPassword());
+        List<UserData> userfindAllData = userService.findAll();
+        if (userfindAllData != null){
+            System.out.println("konnnitiha");
+        }
         if (userdata != null){
             System.out.println("syoriseikou");
         } else {
