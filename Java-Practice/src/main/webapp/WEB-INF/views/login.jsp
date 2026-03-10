@@ -17,7 +17,7 @@
             <button type="submit">ログイン</button>
         </form>
         <p>アカウントが未登録ですか？</p>
-        <p>アカウント作成</p>
+        <a href="${pageContext.request.contextPath}/register">アカウント作成</p>
     </body>
 
 
