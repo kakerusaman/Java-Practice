@@ -17,8 +17,8 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public UserData checkLoginData(String userId, String password){
-        return userMapper.findByLoginIdAndPassword(userId, password);
+    public UserData findUser(String userId){
+        return userMapper.findUser(userId);
     }
 
     public List<UserData> findAll(){

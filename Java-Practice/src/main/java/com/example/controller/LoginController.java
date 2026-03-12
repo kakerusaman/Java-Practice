@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.nio.ReadOnlyBufferException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +30,12 @@ public class LoginController {
     public String login(UserDataForm form, HttpSession session) {
         //エラーだったらログイン画面に遷移
 
-        UserData userdata = userService.checkLoginData(form.getUserId(),form.getPassword());
-        List<UserData> userfindAllData = userService.findAll();
-        if (userfindAllData != null){
-            System.out.println("konnnitiha");
-        }
+        UserData userdata = userService.findUser(form.getUserId());
+
         if (userdata != null){
             System.out.println("syoriseikou");
         } else {
-            System.out.println("kubiokasiihito");
+            throw new ReadOnlyBufferException();
         }
         
         return "redirect:/mypage";

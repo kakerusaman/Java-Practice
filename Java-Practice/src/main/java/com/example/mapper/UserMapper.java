@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
 
     // ログインMapper
-    UserData findByLoginIdAndPassword(@Param("userId") String userId, @Param("password") String password);
+    UserData findUser(@Param("userId") String userId);
 
     // 今の所使い道なし
     List<UserData> findAll();
