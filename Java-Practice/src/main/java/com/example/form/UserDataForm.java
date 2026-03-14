@@ -1,9 +1,14 @@
 package com.example.form;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class UserDataForm {
 
+    @NotBlank
     private String userId;
 
+    @NotBlank
     private String password;
 
 

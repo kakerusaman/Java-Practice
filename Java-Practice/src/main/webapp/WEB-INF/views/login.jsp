@@ -11,8 +11,10 @@
         <p>こちらのアプリを使用するには<br>
            アプリアカウントにログインしてください。</p>
         <form action="login" method="POST">
-            <input class="form" type="text" name="userId">
+            <input class="form" type="text" name="userId" path="userId">
+            <form:errors path="userId"/>
             <input type="password" name="password">
+            <form:errors name="password"/>
             <p>パスワードをお忘れですか？</p>
             <button type="submit">ログイン</button>
         </form>

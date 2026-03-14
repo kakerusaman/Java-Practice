@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.example.form.UserDataForm;
@@ -27,15 +29,19 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(UserDataForm form, HttpSession session) {
+    public String login(@Validated UserDataForm form, BindingResult result, HttpSession session) {
         //エラーだったらログイン画面に遷移
+        if (result.hasErrors()){
+            return "login";
+        }
 
-        UserData userdata = userService.findUser(form.getUserId());
+            // ユーザーデータを取得する
+            UserData userdata = userService.findUser(form.getUserId());
 
         if (userdata != null){
             System.out.println("syoriseikou");
         } else {
-            throw new ReadOnlyBufferException();
+            
         }
         
         return "redirect:/mypage";
