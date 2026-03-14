@@ -10,14 +10,18 @@
         <h1>ログイン</h1>
         <p>こちらのアプリを使用するには<br>
            アプリアカウントにログインしてください。</p>
-        <form action="login" method="POST">
-            <input class="form" type="text" name="userId" path="userId">
-            <form:errors path="userId"/>
-            <input type="password" name="password">
-            <form:errors name="password"/>
+        <form:form action="login" method="POST" modelAttribute="userDataForm">
+            <div>
+                <form:input class="form" type="text" name="userId" path="userId" />
+            </div>
+                <form:errors path="userId"/>
+            <div>
+                <form:input type="password" path="password" />
+            </div>
+            <form:errors path="password"/>
             <p>パスワードをお忘れですか？</p>
             <button type="submit">ログイン</button>
-        </form>
+        </form:form>
         <p>アカウントが未登録ですか？</p>
         <a href="${pageContext.request.contextPath}/register">アカウント作成</p>
     </body>

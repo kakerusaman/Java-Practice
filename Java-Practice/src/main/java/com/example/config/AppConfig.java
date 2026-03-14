@@ -50,7 +50,7 @@ public class AppConfig {
 	@Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
-        ms.setBasename("message");
+        ms.setBasename("messages");
         ms.setDefaultEncoding("UTF-8");
         return ms;
     }
