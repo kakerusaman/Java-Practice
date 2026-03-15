@@ -22,6 +22,7 @@
         <p>生年月日</p>
         <form:input type="text" />
         <p></p>
+        <button type="button">一時保存</button>
         <button type="button">次へ</button>
     </body>
 </html>
