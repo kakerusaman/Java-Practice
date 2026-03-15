@@ -12,7 +12,7 @@
            アプリアカウントにログインしてください。</p>
         <form:form action="login" method="POST" modelAttribute="userDataForm">
             <div>
-                <form:input class="form" type="text" name="userId" path="userId" />
+                <form:input class="form" type="text" path="userId" />
             </div>
                 <form:errors path="userId"/>
             <div>

@@ -8,7 +8,20 @@
     </head>
     <body>
         <h1>個人情報入力画面</h1>
-        <
-        <button type="button" onclick="location.href='${pageContext.request.contextPath}/weather'">天気API</button>
+        <p>性</p>
+        <form:input type="text" />
+        <p>名</p>
+        <form:input type="text" />
+        <p>住所</p>
+        <form:input type="text" />
+        <button type="button">住所検索</button>
+        <p>電話番号</p>
+        <form:input type="text" />
+        <form:input type="text" />
+        <form:input type="text" />
+        <p>生年月日</p>
+        <form:input type="text" />
+        <p></p>
+        <button type="button">次へ</button>
     </body>
 </html>
