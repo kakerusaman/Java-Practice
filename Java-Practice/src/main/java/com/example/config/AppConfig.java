@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @Configuration
 @ComponentScan(basePackages = {"com.example.domain", "com.example.controller"})
@@ -50,10 +51,17 @@ public class AppConfig {
 	@Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
-        ms.setBasename("messages");
+        ms.setBasename("message");
         ms.setDefaultEncoding("UTF-8");
         return ms;
     }
+
+	@Bean
+	public LocalValidatorFactoryBean validator() {
+    	LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+    	bean.setValidationMessageSource(messageSource());
+    	return bean;
+	}
 
 	@Bean
     public PasswordEncoder passwordEncoder() {
