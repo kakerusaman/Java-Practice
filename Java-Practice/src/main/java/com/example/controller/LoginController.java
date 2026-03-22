@@ -31,23 +31,23 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String login(@Validated UserDataForm form, BindingResult result, HttpSession session) {
-        //エラーだったらログイン画面に遷移
-        if (result.hasErrors()){
-            return "login";
-        }
+    // @PostMapping("/login")
+    // public String login(@Validated UserDataForm form, BindingResult result, HttpSession session) {
+    //     //エラーだったらログイン画面に遷移
+    //     if (result.hasErrors()){
+    //         return "login";
+    //     }
 
-            // ユーザーデータを取得する
-            UserData userdata = userService.findUser(form.getUserId());
+    //         // ユーザーデータを取得する
+    //         UserData userdata = userService.findUser(form.getUserId());
 
-        if (userdata != null){
-            System.out.println("syoriseikou");
-        } else {
+    //     if (userdata != null){
+    //         System.out.println("syoriseikou");
+    //     } else {
             
-        }
+    //     }
         
-        return "redirect:/mypage";
-    }
+    //     return "redirect:/mypage";
+    // }
     
 }
