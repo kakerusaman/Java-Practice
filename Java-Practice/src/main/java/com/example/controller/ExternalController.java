@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ExternalController {
     
+    // コメント記述
     @GetMapping("external")
     public String external() {
         return new String();
