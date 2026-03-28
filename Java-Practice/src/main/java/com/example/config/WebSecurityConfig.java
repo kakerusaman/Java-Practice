@@ -38,16 +38,8 @@ public class WebSecurityConfig {
             );
         return http.build();
     }
-
-    @Bean
-    public UserDetailsService userDetailsServices() {
-        UserDetails user = User.withUsername("user")
-            .password(passwordEncoder().encode("password"))
-            .roles("USER")
-            .build();
-        return new InMemoryUserDetailsManager(user);
-    }
-
+    
+    // パスワーンコーダーのBean
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
