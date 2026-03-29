@@ -12,7 +12,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>com.example.config.WebSecurityConfig</param-value>
+        <param-value>com.example.config.WebSecurityConfig com.example.config.AppConfig</param-value>
     </context-param>
 
     <listener>
