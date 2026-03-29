@@ -10,6 +10,6 @@
         <button type="button" onclick="location.href='${pageContext.request.contextPath}/external'">外部API</button>
         <button type="button" onclick="location.href='${pageContext.request.contextPath}/fortuneTelling'">占い遊び</button>
         <button type="button" onclick="location.href='${pageContext.request.contextPath}/external'">何かやりたいことあれば</button>
-        <button type="button" onclick="location.href='${pageContext.request.contextpath}/security'">Spring Security系</button>
+        <button type="button" onclick="location.href='${pageContext.request.contextPath}/security'">Spring Security系</button>
     </body>
 </html>
