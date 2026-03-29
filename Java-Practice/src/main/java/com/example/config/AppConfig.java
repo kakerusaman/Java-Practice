@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @Configuration
-@ComponentScan(basePackages = {"com.example.domain", "com.example.controller"})
+@ComponentScan(basePackages = {"com.example.service"})
 @EnableTransactionManagement
 @MapperScan("com.example.mapper")
 public class AppConfig {
