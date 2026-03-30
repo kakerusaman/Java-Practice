@@ -5,20 +5,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration //設定クラスであることを示す。@Beanで書いたものをspringのコンテナに登録できる
 @EnableWebSecurity //springsecurityのWeb向けの機能を有効化する　設定を自動でインポート
 public class WebSecurityConfig {
-    
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> {
-                auth.requestMatchers(new AntPathRequestMatcher("/login")).permitAll();
-                auth.requestMatchers(new AntPathRequestMatcher("/register")).permitAll();
-                auth.requestMatchers(new AntPathRequestMatcher("/public/**")).permitAll();
-                auth.requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN");
+                auth.requestMatchers("/login").permitAll();
+                auth.requestMatchers("/register").permitAll();
+                auth.requestMatchers("/public/**").permitAll();
+                auth.requestMatchers("/admin/**").hasRole("ADMIN");
                 auth.anyRequest().authenticated();
             })
             .formLogin(form -> form
@@ -32,5 +31,5 @@ public class WebSecurityConfig {
             );
         return http.build();
     }
-    
+
 }

@@ -19,27 +19,27 @@
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
-        <version>6.1.6</version>
+        <version>7.0.0</version>
     </dependency>
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>
-        <version>6.1.6</version>
+        <version>7.0.0</version>
     </dependency>
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-jdbc</artifactId>
-        <version>6.1.4</version>
+        <version>7.0.0</version>
     </dependency>
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-tx</artifactId>
-        <version>6.1.6</version>
+        <version>7.0.0</version>
     </dependency>
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-webmvc</artifactId>
-        <version>6.1.4</version>
+        <version>7.0.0</version>
     </dependency>
     <!-- MyBatis -->
     <dependency>
@@ -77,39 +77,39 @@
         <artifactId>hibernate-validator</artifactId>
         <version>8.0.1.Final</version>
     </dependency>
-    <!-- JSP API (Jakarta EE) -->
+    <!-- JSP API (Jakarta EE 11) -->
 <dependency>
     <groupId>jakarta.servlet.jsp</groupId>
     <artifactId>jakarta.servlet.jsp-api</artifactId>
-    <version>3.0.0</version>
+    <version>4.0.0</version>
     <scope>provided</scope>
 </dependency>
-<!-- JSTL (Jakarta EE) -->
+<!-- JSTL (Jakarta EE 11) -->
 <dependency>
     <groupId>jakarta.servlet.jsp.jstl</groupId>
     <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-    <version>2.0.0</version>
+    <version>3.0.0</version>
 </dependency>
 <dependency>
     <groupId>org.glassfish.web</groupId>
     <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-    <version>2.0.0</version>
+    <version>3.0.1</version>
 </dependency>
 <!--spring-security-->
 <dependency>
     <groupId>org.springframework.security</groupId>
     <artifactId>spring-security-crypto</artifactId>
-    <version>6.3.4</version>
+    <version>7.0.0</version>
 </dependency>
 <dependency>
     <groupId>org.springframework.security</groupId>
     <artifactId>spring-security-web</artifactId>
-    <version>6.3.4</version>
+    <version>7.0.0</version>
 </dependency>
 <dependency>
     <groupId>org.springframework.security</groupId>
     <artifactId>spring-security-config</artifactId>
-    <version>6.3.4</version>
+    <version>7.0.0</version>
 </dependency>
   </dependencies>
   <build>
