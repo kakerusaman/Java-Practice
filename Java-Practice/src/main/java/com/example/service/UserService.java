@@ -30,4 +30,12 @@ public class UserService {
 
         userMapper.insertUser(userId, hashPass);
     }
+
+    public boolean verifyUser(String userId, String password) {
+        UserData user = userMapper.findUser(userId);
+        if (user == null) {
+            return false;
+        }
+        return passwordEncoder.matches(password, user.getPassword());
+    }
 }
