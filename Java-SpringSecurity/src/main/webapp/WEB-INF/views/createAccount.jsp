@@ -14,25 +14,29 @@
         <form:form action="${pageContext.request.contextPath}/security/login" method="POST">
             <div>
                 <label>ログインID</label>
-                <form:input type="text" name="loginId" />
+                <form:input type="text" path="loginId" />
+                <form:errors path="loginId" />
             </div>
             <div>
                 <label>パスワード</label>
-                <form:input type="password" name="password" />
+                <form:input type="password" path="password" />
+                <form:errors path="password" />
             </div>
             <div>
                 <label>メールアドレス</label>
-                <form:input type="text" path="e-mail" />
+                <form:input type="text" path="email" />
+                <form:errors path="email" />
             </div>
             <div>
                 <lavel>プレミアム会員選択</lavel>
-                <%-- nameをラジオボタンで統一することによって一意に選択可能 --%>
+                <%-- pathをラジオボタンで統一することによって一意に選択可能 --%>
                 <label>プレミアム会員で登録する方</label>
-                <form:input type="radio" name="role" value="premium" />
+                <form:input type="radio" path="role" value="premium" />
                 <label>一般会員で登録する方</label>
-                <form:input type="radio" name="role" value="general"/>
+                <form:input type="radio" path="role" value="general"/>
                 <label>簡易ログインの方</label>
-                <form:input type="radio" name="role" value="guest" />
+                <form:input type="radio" path="role" value="guest" />
+                <form:errors path="role" />
             </div>
             <button type="submit">登録</button>
         </form:form>
