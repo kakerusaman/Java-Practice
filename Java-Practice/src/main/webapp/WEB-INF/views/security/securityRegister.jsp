@@ -6,21 +6,27 @@
         <title>Security認証</title>
     </head>
     <body>
-        <h1>再認証</h1>
-        <p>このページにアクセスするには再度認証が必要です。</p>
+        <h1>多要素認証用のアカウントを作成してください</h1>
         <c:if test="${param.error != null}">
             <p style="color:red;">IDまたはパスワードが正しくありません。</p>
         </c:if>
         <form:form action="${pageContext.request.contextPath}/security/login" method="POST">
             <div>
-                <label>ユーザーID</label>
-                <input type="text" name="userId" />
+                <label>ログインID</label>
+                <form:input type="text" name="loginId" />
             </div>
             <div>
                 <label>パスワード</label>
-                <input type="password" name="password" />
+                <form:input type="password" name="password" />
             </div>
-            <button type="submit">認証</button>
+            <div>
+                <label>メールアドレス</label>
+                <form:input type="text" path="e-mail" />
+            </div>
+            <div>
+                <lavel>ロール</lavel>
+            </div>
+            <button type="submit">登録</button>
         </form:form>
     </body>
 </html>
