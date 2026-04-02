@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,30 +12,30 @@
         <c:if test="${param.error != null}">
             <p style="color:red;">IDまたはパスワードが正しくありません。</p>
         </c:if>
-        <form:form action="${pageContext.request.contextPath}/security/login" method="POST">
+        <form:form action="${pageContext.request.contextPath}/createAccount" method="POST" modelAttribute="userForm">
             <div>
-                <label>ログインID</label>
+                <h1>ログインID</h1>
                 <form:input type="text" path="loginId" />
                 <form:errors path="loginId" />
             </div>
             <div>
-                <label>パスワード</label>
+                <<h1>パスワード</<h1>
                 <form:input type="password" path="password" />
                 <form:errors path="password" />
             </div>
             <div>
-                <label>メールアドレス</label>
+                <<h1>メールアドレス</<h1>
                 <form:input type="text" path="email" />
                 <form:errors path="email" />
             </div>
             <div>
-                <lavel>プレミアム会員選択</lavel>
+                <<h1>会員選択</<h1>
                 <%-- pathをラジオボタンで統一することによって一意に選択可能 --%>
-                <label>プレミアム会員で登録する方</label>
+                <<h3>>プレミアム会員で登録する方</h3>
                 <form:input type="radio" path="role" value="premium" />
-                <label>一般会員で登録する方</label>
+                <h3>一般会員で登録する方</h3>
                 <form:input type="radio" path="role" value="general"/>
-                <label>簡易ログインの方</label>
+                <h3>簡易ログインの方</h3>
                 <form:input type="radio" path="role" value="guest" />
                 <form:errors path="role" />
             </div>
