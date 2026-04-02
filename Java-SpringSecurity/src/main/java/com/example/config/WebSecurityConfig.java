@@ -24,7 +24,7 @@ public class WebSecurityConfig {
         .build();
         http
             .authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/login").permitAll();
+                auth.requestMatchers("/createAccount").permitAll();
                 auth.requestMatchers("/register").permitAll();
                 auth.requestMatchers("/public/**").permitAll();
                 auth.requestMatchers("/admin/**").hasRole("ADMIN");
@@ -32,7 +32,7 @@ public class WebSecurityConfig {
             })
             .formLogin(form -> form
                 .loginPage("/login")
-                .loginProcessingUrl("/login")
+                .loginProcessingUrl("/createAccount")
                 .usernameParameter("userId")
                 .defaultSuccessUrl("/mypage", true)
             )
