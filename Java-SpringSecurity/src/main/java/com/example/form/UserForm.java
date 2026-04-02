@@ -10,7 +10,7 @@ public class UserForm {
 
     // 画面から入力してもらう
     @NotNull
-    private String userId;
+    private String loginId;
 
     //画面から入力してもらう
     @NotNull
