@@ -25,7 +25,6 @@ public class CreateAccountController {
     // 上記のような書き方もできる valueはパスを設定していてparamsはもし同じURLでも処理を分けたい場合に可能。
     @GetMapping("/createAccount")
     public String createAccount(Model model){
-
         return "createAccount";
     }
 
@@ -42,7 +41,11 @@ public class CreateAccountController {
     */
     @PostMapping("/createAccount")
     public String createAccount(@ModelAttribute UserForm userForm, BindingResult result, HttpSession session) {
-        //TODO: process POST request
+
+        // エラーがある場合はif文の中に入る
+        if (result.hasErrors()){
+            return "redirect: createAccount";
+        }
         
         return "hoge";
     }
