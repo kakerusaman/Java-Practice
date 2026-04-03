@@ -1,6 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,24 +19,24 @@
                 <form:errors path="loginId" />
             </div>
             <div>
-                <<h1>パスワード</<h1>
+                <h1>パスワード</h1>
                 <form:input type="password" path="password" />
                 <form:errors path="password" />
             </div>
             <div>
-                <<h1>メールアドレス</<h1>
+                <h1>メールアドレス</h1>
                 <form:input type="text" path="email" />
                 <form:errors path="email" />
             </div>
             <div>
-                <<h1>会員選択</<h1>
+                <h1>会員選択</h1>
                 <%-- pathをラジオボタンで統一することによって一意に選択可能 --%>
-                <<h3>>プレミアム会員で登録する方</h3>
-                <form:input type="radio" path="role" value="premium" />
+                <h3>プレミアム会員で登録する方</h3>
+                <form:radiobutton path="role" value="premium" />
                 <h3>一般会員で登録する方</h3>
-                <form:input type="radio" path="role" value="general"/>
+                <form:radiobutton path="role" value="general" />
                 <h3>簡易ログインの方</h3>
-                <form:input type="radio" path="role" value="guest" />
+                <form:radiobutton path="role" value="guest" />
                 <form:errors path="role" />
             </div>
             <button type="submit">登録</button>
