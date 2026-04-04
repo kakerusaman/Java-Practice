@@ -28,6 +28,7 @@ public class WebSecurityConfig {
                 auth.requestMatchers("/login").permitAll();
                 auth.requestMatchers("/register").permitAll();
                 auth.requestMatchers("/public/**").permitAll();
+                auth.requestMatchers("/css/**", "/js/**").permitAll();
                 auth.requestMatchers("/admin/**").hasRole("ADMIN");
                 auth.anyRequest().authenticated();
             })

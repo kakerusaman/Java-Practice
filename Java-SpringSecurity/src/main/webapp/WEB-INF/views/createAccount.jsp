@@ -6,6 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>アカウント作成</title>
+<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- 自分のJSファイル（jQueryより後に書く） -->
+<script src="<c:url value='/js/createaccount.js'/>"></script>
 </head>
 <body>
     <h1>アカウントを作成してください</h1>
