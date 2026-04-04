@@ -11,7 +11,4 @@
       <typeAliases>
           <package name="com.example.model"/>
       </typeAliases>
-      <mappers>
-          <mapper resource="mapper/CreateAccountMapper.xml"/>
-      </mappers>
   </configuration>
