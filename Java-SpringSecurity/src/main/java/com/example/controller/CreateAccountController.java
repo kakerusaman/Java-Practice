@@ -1,19 +1,24 @@
 package com.example.controller;
 
+import jakarta.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import com.example.form.*;
 
-import jakarta.servlet.http.HttpSession;
+import com.example.form.UserForm;
+import com.example.service.CreateAccountService;
 
 
 @Controller
 public class CreateAccountController {
+
+    @Autowired
+    CreateAccountService createAccountService;
     
     // これをする(@ModelAttribute)とModelに設定されるらしい
     @ModelAttribute
@@ -42,12 +47,21 @@ public class CreateAccountController {
     @PostMapping("/createAccount")
     public String createAccount(@ModelAttribute UserForm userForm, BindingResult result, HttpSession session) {
 
-        // エラーがある場合はif文の中に入る
+        // 入力値でエラーがある場合はif文の中に入る
         if (result.hasErrors()){
-            return "redirect: createAccount";
+            return "redirect:createAccount";
         }
+
+        // 同じログインIDとメールアドレスが存在するか確認する
+        String test = createAccountService.existsLginIdorEmail(userForm);
+
+        if (test == "OK"){
+            
+        }
+        createAccountService.register(userForm);
+
         
-        return "hoge";
+        return "registerComplete";
     }
     
 }
