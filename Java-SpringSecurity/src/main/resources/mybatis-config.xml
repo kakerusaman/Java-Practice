@@ -12,8 +12,6 @@
           <package name="com.example.model"/>
       </typeAliases>
       <mappers>
-          <mapper resource="mapper/SettingsMapper.xml"/>
-          <mapper resource="mapper/UserMapper.xml"/>
-          <mapper resource="mapper/AppUserMapper.xml"/>
+          <mapper resource="mapper/CreateAccountMapper.xml"/>
       </mappers>
   </configuration>
