@@ -58,7 +58,12 @@ public class CreateAccountService {
         }
 
         userForm.setId(prefix + String.format("%03d", nextSeq));
-        
+
+        // 登録日時・更新日時をセット
+        java.time.LocalDateTime now = java.time.LocalDateTime.now();
+        userForm.setCreatedAt(now);
+        userForm.setUpdatedAt(now);
+
         // passwordをハッシュ化する
         userForm.setPassword(passwordEncoder.encode(userForm.getPassword()));
 
