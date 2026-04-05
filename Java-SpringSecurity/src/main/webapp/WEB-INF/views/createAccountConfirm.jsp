@@ -118,7 +118,7 @@
 
             <div class="submit-wrap confirm-actions">
                 <a href="<c:url value='/createAccount'/>" class="back-btn">戻る</a>
-                <form action="<c:url value='/createAccount/confirm'/>" method="post">
+                <form action="<c:url value='/createAccount/complete'/>" modelAttribute="userForm" method="post">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button type="submit" class="submit-btn">登録する</button>
                 </form>

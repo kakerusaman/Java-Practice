@@ -352,6 +352,48 @@ input[type="email"]:focus {
     color: #fff;
 }
 
+/* ========== Complete Page ========== */
+.complete-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    padding: 40px 24px;
+    text-align: center;
+}
+
+.complete-icon {
+    margin-bottom: 28px;
+}
+
+.complete-icon svg {
+    width: 80px;
+    height: 80px;
+}
+
+.complete-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a2744;
+    margin-bottom: 16px;
+}
+
+.complete-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.9;
+    margin-bottom: 36px;
+}
+
+.complete-btn {
+    display: inline-block;
+    width: 200px;
+    line-height: 52px;
+    text-align: center;
+    text-decoration: none;
+}
+
 /* ========== Submit ========== */
 .submit-wrap {
     margin-top: 36px;
