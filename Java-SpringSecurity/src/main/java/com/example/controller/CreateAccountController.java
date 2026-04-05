@@ -45,7 +45,8 @@ public class CreateAccountController {
     3.登録完了メッセージを一度だけ表示したい
     */
     @PostMapping("/createAccount")
-    public String createAccount(@ModelAttribute UserForm userForm, BindingResult result, HttpSession session) {
+    //  入力値をチェックして確認画面に飛ばす
+    public String createAccount(@ModelAttribute UserForm userForm, BindingResult result, HttpSession session, Model model) {
 
         // 入力値でエラーがある場合はif文の中に入る
         if (result.hasErrors()){
@@ -58,10 +59,12 @@ public class CreateAccountController {
         if (test == "OK"){
             
         }
-        createAccountService.register(userForm);
-
         
-        return "registerComplete";
+        // 入力された値を確認画面に持っていく
+        model.addAttribute("userForm", userForm);
+        
+        // 確認画面の表示
+        return "createAccountConfirm";
     }
     
 }
