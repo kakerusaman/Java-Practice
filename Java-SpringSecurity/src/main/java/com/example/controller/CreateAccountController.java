@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.form.UserForm;
 import com.example.service.CreateAccountService;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -48,11 +48,11 @@ public class CreateAccountController {
     */
     @PostMapping("/createAccount")
     //  入力値をチェックして確認画面に飛ばす
-    public String createAccount(@ModelAttribute UserForm userForm, BindingResult result, HttpSession session, Model model) {
+    public String createAccount(@Validated @ModelAttribute UserForm userForm, BindingResult result, HttpSession session, Model model) {
 
         // 入力値でエラーがある場合はif文の中に入る
         if (result.hasErrors()){
-            return "redirect:createAccount";
+            return "createAccount";
         }
 
         // 同じログインIDとメールアドレスが存在するか確認する
