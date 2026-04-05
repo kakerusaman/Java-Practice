@@ -24,7 +24,7 @@ public class WebSecurityConfig {
         .build();
         http
             .authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/createAccount").permitAll();
+                auth.requestMatchers("/createAccount", "/createAccount/confirm", "/createAccount/complete").permitAll();
                 auth.requestMatchers("/login").permitAll();
                 auth.requestMatchers("/register").permitAll();
                 auth.requestMatchers("/public/**").permitAll();
