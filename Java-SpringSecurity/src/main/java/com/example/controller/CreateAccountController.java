@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.form.UserForm;
 import com.example.service.CreateAccountService;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -60,11 +62,30 @@ public class CreateAccountController {
             
         }
         
-        // 入力された値を確認画面に持っていく
+        // セッションに保存して確認画面に持っていく
+        session.setAttribute("userForm", userForm);
         model.addAttribute("userForm", userForm);
-        
+
         // 確認画面の表示
         return "createAccountConfirm";
+    }
+
+    @PostMapping("createAccount/complete")
+    public String createAccountComplete(HttpSession session, Model model) {
+
+        // セッションからuserFormを取り出す
+        UserForm userForm = (UserForm) session.getAttribute("userForm");
+
+        // ユーザー登録を行う前にもう一度ログインIDとメールアドレスが使われていないか確認したほうがいい。けど後でやる
+
+        // ユーザー登録を行う。
+        createAccountService.register(userForm);
+
+        // セッションから削除
+        session.removeAttribute("userForm");
+
+        model.addAttribute("userForm", userForm);
+        return "createAccountComplete";
     }
     
 }
