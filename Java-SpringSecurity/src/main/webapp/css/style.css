@@ -398,6 +398,66 @@ input[type="email"]:focus {
     opacity: 0.7;
 }
 
+/* ========== OTP Page ========== */
+.otp-card {
+    max-width: 460px;
+}
+
+.otp-icon {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.otp-icon svg {
+    width: 56px;
+    height: 56px;
+}
+
+.otp-desc {
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.otp-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.otp-box {
+    width: 52px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #1a2744;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    caret-color: transparent;
+}
+
+.otp-box:focus {
+    border-color: #1a2744;
+    box-shadow: 0 0 0 3px rgba(26, 39, 68, 0.1);
+    background: #fff;
+}
+
+.otp-separator {
+    font-size: 24px;
+    color: #aaa;
+    font-weight: 300;
+    margin: 0 2px;
+}
+
 /* ========== Complete Page ========== */
 .complete-container {
     display: flex;
