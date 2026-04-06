@@ -352,6 +352,52 @@ input[type="email"]:focus {
     color: #fff;
 }
 
+/* ========== Login Page ========== */
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: #f5f5f5;
+}
+
+.login-card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.login-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a2744;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.login-field {
+    margin-bottom: 20px;
+}
+
+.login-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.login-link {
+    font-size: 13px;
+    color: #1a2744;
+    text-decoration: underline;
+}
+
+.login-link:hover {
+    opacity: 0.7;
+}
+
 /* ========== Complete Page ========== */
 .complete-container {
     display: flex;
