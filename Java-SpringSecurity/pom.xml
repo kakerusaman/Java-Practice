@@ -111,6 +111,12 @@
     <artifactId>spring-security-config</artifactId>
     <version>7.0.0</version>
 </dependency>
+<!-- OTP認証用のライブラリ -->
+<dependency>
+    <groupId>com.eatthepath</groupId>
+    <artifactId>java-otp</artifactId>
+    <version>0.4.0</version>
+</dependency>
   </dependencies>
   <build>
     <finalName>Java-SpringSecurity</finalName>
