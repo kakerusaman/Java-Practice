@@ -2,7 +2,9 @@ package com.example.form;
 
 import java.time.LocalDateTime;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,15 +16,18 @@ public class UserForm {
     private String id;
 
     // 画面から入力してもらう
-    @NotNull
+    @NotBlank
+    @Size(min = 5, max = 20)
     private String loginId;
 
     //画面から入力してもらう
-    @NotNull
+    @NotBlank
+    // パスワードは強固なものにしたいけどまだ検証段階なので入力が面倒passayというJavaのライブラリがいい感じみたい
     private String password;
 
     //画面から入力してもらう
-    @NotNull
+    @NotBlank
+    // こちらも正規表現で行いたいけど検証が面倒になるため放置s
     private String email;
 
     //画面から入力してもらう
