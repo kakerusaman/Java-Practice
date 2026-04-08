@@ -10,6 +10,7 @@ import com.example.model.UserData;
 @Mapper
 public interface LoginUserMapper {
 
+    // ログインIDの取得 OptionalはログインIDがnullかもしれないので
     Optional<UserData> findByLoginName(@Param("loginId") String loginId);
 
 }
