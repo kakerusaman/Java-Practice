@@ -12,5 +12,4 @@ public interface LoginUserMapper {
 
     Optional<UserData> findByLoginName(@Param("loginId") String loginId);
 
-    
 }
