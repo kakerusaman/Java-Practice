@@ -13,5 +13,17 @@ public class LoginController {
     public String login() {
         return "login";
     }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
+
+    @GetMapping("/ott/sent")
+    public String ottSent() {
+        return "onetoken";
+    }
+    
+    
     
 }
