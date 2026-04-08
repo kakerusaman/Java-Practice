@@ -6,5 +6,4 @@
     <select id="findByLoginName" resultType="com.example.model.UserData">
         SELECT * FROM t_user_info where login_id = #{loginId};
     </select>
-
 </mapper>
