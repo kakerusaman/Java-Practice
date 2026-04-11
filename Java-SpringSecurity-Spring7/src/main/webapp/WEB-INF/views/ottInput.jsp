@@ -132,39 +132,46 @@
 
             <p class="otp-desc">
                 パスワード認証が完了しました。<br>
-                送信されたワンタイムトークンを入力してください。
+                下記のワンタイムトークンを入力フォームに貼り付けてください。
             </p>
+
+            <%-- セッションから OTT トークンを取得して表示 --%>
+            <% String ottToken = (String) session.getAttribute("ott_token"); %>
+            <% if (ottToken != null) { %>
+            <div style="margin-bottom: 24px; padding: 16px; background: #f0f3f9; border-radius: 6px; border: 1.5px dashed #1a2744; text-align: center;">
+                <p style="font-size: 11px; color: #888; margin-bottom: 8px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700;">発行されたトークン</p>
+                <code style="font-size: 14px; color: #1a2744; font-weight: 700; letter-spacing: 0.05em; word-break: break-all;"><%= ottToken %></code>
+            </div>
+            <% } %>
 
             <form id="otpForm" action="${pageContext.request.contextPath}/login/ott" method="post">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                <input type="hidden" id="otpCode" name="token" value="">
 
-                <div class="otp-inputs">
-                    <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
-                    <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
-                    <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
-                    <span class="otp-separator">—</span>
-                    <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
-                    <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
-                    <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                <div style="margin-bottom: 8px;">
+                    <label style="display:block; font-size:13px; color:#555; margin-bottom:6px;">トークンを入力</label>
+                    <input type="text"
+                           name="token"
+                           placeholder="トークンを貼り付けてください"
+                           autocomplete="off"
+                           required
+                           style="width:100%; height:44px; padding:0 12px; border:1px solid #ccc; border-radius:3px; font-size:13px; font-family:monospace;">
                 </div>
 
                 <div class="submit-wrap">
-                    <button type="submit" id="otpSubmit" class="submit-btn" disabled>認証する</button>
+                    <button type="submit" class="submit-btn">認証する</button>
                 </div>
             </form>
 
             <div style="margin-top: 20px; padding: 14px 16px; background: #f7f8fc; border-radius: 4px; border-left: 3px solid #4caf50;">
                 <p style="font-size: 12px; color: #666; line-height: 1.7; margin: 0;">
                     <strong style="color:#2e7d32;">✓ Step 1 完了：</strong>パスワード認証済み<br>
-                    6桁のワンタイムトークンを入力して認証を完了してください。
+                    ワンタイムトークンを入力して認証を完了してください。
                 </p>
             </div>
 
         </div>
     </div>
 
-    <script src="${pageContext.request.contextPath}/js/otpInput.js"></script>
 
 </body>
 </html>
