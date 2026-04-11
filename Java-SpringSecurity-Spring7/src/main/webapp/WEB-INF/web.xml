@@ -5,14 +5,14 @@
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <!-- ルートApplicationContextの読み込み（WebSecurityConfigを認識させる） -->
+    <!-- ルートApplicationContextの読み込み -->
     <context-param>
         <param-name>contextClass</param-name>
         <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>com.example.config.WebSecurityConfig com.example.config.AppConfig</param-value>
+        <param-value>com.example.config.SecurityConfig com.example.config.AppConfig</param-value>
     </context-param>
 
     <listener>
