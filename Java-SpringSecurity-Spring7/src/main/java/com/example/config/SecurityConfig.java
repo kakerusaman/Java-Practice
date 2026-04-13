@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.authority.FactorGrantedAuthority;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.example.service.EmailOneTimeTokenGenerationSuccessHandler;
+
   @Configuration
   @EnableWebSecurity                                                                                                                                                                                                     
   @EnableMultiFactorAuthentication(authorities = {
@@ -30,8 +32,8 @@ import org.springframework.security.web.SecurityFilterChain;
                 .defaultSuccessUrl("/complete") // ⑥
               )                                                                                                                                                                        
               .oneTimeTokenLogin(ott -> ott                                                                                                                                                                                
-                  .generationSuccessHandler(ottHandler)  
-                  .defaultZSuccessUrl("/complete")                                                                                                                                                                  
+                  .tokenGenerationSuccessHandler(ottHandler)  
+                  .defaultSuccessUrl("/complete")                                                                                                                                                                  
               );
           return http.build();                                                                                                                                                                                             
       }           
