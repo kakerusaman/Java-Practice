@@ -15,6 +15,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -31,7 +32,7 @@ public class AppConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5433/springsecurity");
+		dataSource.setUrl("jdbc:postgresql://localhost:5434/springsecurity_spring7");
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("yourpassword");
 		return dataSource;
@@ -72,5 +73,17 @@ public class AppConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-	
+
+	@Bean
+	public JavaMailSenderImpl mailSender() {
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPort(587);
+		mailSender.setUsername("@gmail.com");  // 送信元メールアドレス
+		mailSender.setPassword("your-app-password");     // アプリパスワード
+		mailSender.getJavaMailProperties().setProperty("mail.smtp.auth", "true");
+		mailSender.getJavaMailProperties().setProperty("mail.smtp.starttls.enable", "true");
+		return mailSender;
+	}
+
 }
