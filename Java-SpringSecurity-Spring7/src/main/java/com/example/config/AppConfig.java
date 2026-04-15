@@ -8,10 +8,10 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -31,12 +31,12 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 @PropertySource("classpath:application.properties")
 public class AppConfig {
 
-	@Value("${mail.username}")
-	private String mailUsername;
+	private final Environment env;
 
-	@Value("${mail.password}")
-	private String mailPassword;
-	
+	public AppConfig(Environment env) {
+		this.env = env;
+	}
+
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -46,12 +46,12 @@ public class AppConfig {
 		dataSource.setPassword("yourpassword");
 		return dataSource;
 	}
-	
+
 	@Bean
 	public PlatformTransactionManager transactionManager(DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
 	}
-	
+
 	@Bean
 	public SqlSessionFactoryBean sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
@@ -62,7 +62,7 @@ public class AppConfig {
 		sessionFactoryBean.setMapperLocations(mapperLocations);
 		return sessionFactoryBean;
 	}
-	
+
 	@Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
@@ -85,11 +85,15 @@ public class AppConfig {
 
 	@Bean
 	public JavaMailSenderImpl mailSender() {
+		String mailFrom = env.getProperty("mail.from");
+		String mailPassword = env.getProperty("mail.password");
+		System.out.println("=== mail.from: " + mailFrom);
+		System.out.println("=== mail.password length: " + (mailPassword != null ? mailPassword.length() : "null"));
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587);
-		mailSender.setUsername(mailUsername);  // 送信元メールアドレス
-		mailSender.setPassword(mailPassword);  // アプリパスワード
+		mailSender.setUsername(mailFrom);
+		mailSender.setPassword(mailPassword);
 		mailSender.getJavaMailProperties().setProperty("mail.smtp.auth", "true");
 		mailSender.getJavaMailProperties().setProperty("mail.smtp.starttls.enable", "true");
 		return mailSender;
