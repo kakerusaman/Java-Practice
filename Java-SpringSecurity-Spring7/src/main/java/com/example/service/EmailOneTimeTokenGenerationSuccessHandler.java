@@ -5,12 +5,11 @@ import java.io.IOException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.authentication.ott.OneTimeToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.ott.OneTimeTokenGenerationSuccessHandler;
 import org.springframework.security.web.authentication.ott.RedirectOneTimeTokenGenerationSuccessHandler;
 import org.springframework.stereotype.Service;
 
+import com.example.mapper.LoginUserMapper;
 import com.example.model.UserData;
 
 import jakarta.servlet.ServletException;
@@ -20,13 +19,16 @@ import jakarta.servlet.http.HttpServletResponse;
 @Service
 public class EmailOneTimeTokenGenerationSuccessHandler
         implements OneTimeTokenGenerationSuccessHandler {
-    
-    private final MailSender mailSender;
-    private final OneTimeTokenGenerationSuccessHandler redirectHandler
-            = new RedirectOneTimeTokenGenerationSuccessHandler("/ott/sent");
 
-    public EmailOneTimeTokenGenerationSuccessHandler(MailSender mailSender){
+    private final MailSender mailSender;
+    private final LoginUserMapper loginUserMapper;
+    private final OneTimeTokenGenerationSuccessHandler redirectHandler
+            = new RedirectOneTimeTokenGenerationSuccessHandler("/ott/input");
+
+    public EmailOneTimeTokenGenerationSuccessHandler(MailSender mailSender,
+                                                     LoginUserMapper loginUserMapper) {
         this.mailSender = mailSender;
+        this.loginUserMapper = loginUserMapper;
     }
 
     @Override
@@ -34,22 +36,20 @@ public class EmailOneTimeTokenGenerationSuccessHandler
                        HttpServletResponse response,
                        OneTimeToken token) throws IOException, ServletException {
 
-                                // トークンをメールで送信
         SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setTo(resolveEmailAddress(request)); // ユーザーのメアドを取得
+        mail.setTo(resolveEmailAddress(request));
         mail.setSubject("ワンタイムトークン");
         mail.setText("トークン: " + token.getTokenValue());
         mailSender.send(mail);
 
-        // 送信完了ページへリダイレクト
         redirectHandler.handle(request, response, token);
-        }
+    }
 
-     private String resolveEmailAddress(HttpServletRequest request) {
-      // SecurityContext から認証済みユーザーを取得                                                                                                                                                                        
-      Authentication auth = SecurityContextHolder.getContext().getAuthentication();                                                                                                                                        
-      // UserDetails からメールアドレスを取得                                                                                                                                                               
-      UserData user = (UserData) auth.getPrincipal();                                                                                                                                                                      
-      return user.getEmail();                                                                                                                                                                                              
-  }      
+    private String resolveEmailAddress(HttpServletRequest request) {
+        // OTT生成時はパスワード認証前のためSecurityContextには情報がない
+        // フォームのusernameパラメータからDBを検索してメールアドレスを取得する
+        String username = request.getParameter("username");
+        UserData user = loginUserMapper.findByLoginName(username);
+        return user.getEmail();
+    }
 }
