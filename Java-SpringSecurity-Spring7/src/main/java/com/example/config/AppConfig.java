@@ -8,7 +8,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -26,7 +28,14 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 @ComponentScan(basePackages = {"com.example.service"})
 @EnableTransactionManagement
 @MapperScan("com.example.mapper")
+@PropertySource("classpath:application.properties")
 public class AppConfig {
+
+	@Value("${mail.username}")
+	private String mailUsername;
+
+	@Value("${mail.password}")
+	private String mailPassword;
 	
 	@Bean
 	public DataSource dataSource() {
@@ -79,8 +88,8 @@ public class AppConfig {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587);
-		mailSender.setUsername("@gmail.com");  // 送信元メールアドレス
-		mailSender.setPassword("your-app-password");     // アプリパスワード
+		mailSender.setUsername(mailUsername);  // 送信元メールアドレス
+		mailSender.setPassword(mailPassword);  // アプリパスワード
 		mailSender.getJavaMailProperties().setProperty("mail.smtp.auth", "true");
 		mailSender.getJavaMailProperties().setProperty("mail.smtp.starttls.enable", "true");
 		return mailSender;
