@@ -2,6 +2,7 @@ package com.example.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.config.annotation.authorization.EnableMultiFactorAuthentication;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,7 +25,11 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/css/**", "/js/**", "/login").permitAll() // ③
-                .requestMatchers("/ott/**").hasAuthority("FACTOR_PASSWORD") // ④
+                .requestMatchers("/ott/input", "/ott/generate", "/login/ott") // ④
+                    .access((authentication, context) -> new AuthorizationDecision(
+                        authentication.get().getAuthorities().stream()
+                            .anyMatch(a -> a.getAuthority().equals("FACTOR_PASSWORD"))
+                    ))
                 .anyRequest().authenticated()                               // ⑤
             )
             .formLogin(form -> form
@@ -33,7 +38,7 @@ public class SecurityConfig {
             )
             .oneTimeTokenLogin(ott -> ott
                 .tokenGenerationSuccessHandler(ottHandler)
-                .loginPage("/ott/input")      // FACTOR_OTT不足時のリダイレクト先（カスタム画面）
+                .loginPage("/ott/input")      // FACTOR_OTT不足時のリダイレクト先
                 .showDefaultSubmitPage(false) // Spring Securityのデフォルト画面を無効化
                 .defaultSuccessUrl("/complete")
             );
