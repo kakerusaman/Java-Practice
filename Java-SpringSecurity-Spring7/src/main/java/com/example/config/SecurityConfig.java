@@ -14,9 +14,9 @@ import com.example.service.EmailOneTimeTokenGenerationSuccessHandler;
 @Configuration
 @EnableWebSecurity
 @EnableMultiFactorAuthentication(authorities = {
-    FactorGrantedAuthority.PASSWORD_AUTHORITY, // ①
+    FactorGrantedAuthority.PASSWORD_AUTHORITY, 
     FactorGrantedAuthority.OTT_AUTHORITY
-})
+}) // ①
 public class SecurityConfig {
 
     @Bean
@@ -33,14 +33,14 @@ public class SecurityConfig {
                 .anyRequest().authenticated()                               // ⑤
             )
             .formLogin(form -> form
-                .loginPage("/login")
-                .defaultSuccessUrl("/complete") // ⑥
+                .loginPage("/login") // ⑥
             )
             .oneTimeTokenLogin(ott -> ott
                 .tokenGenerationSuccessHandler(ottHandler)
-                .loginPage("/ott/input")      // FACTOR_OTT不足時のリダイレクト先
-                .showDefaultSubmitPage(false) // Spring Securityのデフォルト画面を無効化
-                .defaultSuccessUrl("/complete")
+                .loginPage("/ott/input")           // FACTOR_OTT不足時のリダイレクト先
+                .loginProcessingUrl("/login/ott")  // loginPage()設定で上書きされるため明示的に指定
+                .showDefaultSubmitPage(false)      // Spring Securityのデフォルト画面を無効化
+                .defaultSuccessUrl("/complete", true)
             );
         return http.build();
     }
