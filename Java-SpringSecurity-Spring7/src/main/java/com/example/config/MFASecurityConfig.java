@@ -2,6 +2,7 @@ package com.example.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.config.annotation.authorization.EnableMultiFactorAuthentication;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,12 +13,13 @@ import org.springframework.security.web.SecurityFilterChain;
 import com.example.service.EmailOneTimeTokenGenerationSuccessHandler;
 
 @Configuration
+@Profile("mfa")
 @EnableWebSecurity
 @EnableMultiFactorAuthentication(authorities = {
     FactorGrantedAuthority.PASSWORD_AUTHORITY, 
     FactorGrantedAuthority.OTT_AUTHORITY
 }) // ①
-public class SecurityConfig {
+public class MFASecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http,
