@@ -25,12 +25,12 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/css/**", "/js/**", "/login").permitAll() // ③
-                .requestMatchers("/ott/input", "/ott/generate", "/login/ott") // ④
+                .requestMatchers("/ott/input") 
                     .access((authentication, context) -> new AuthorizationDecision(
                         authentication.get().getAuthorities().stream()
-                            .anyMatch(a -> a.getAuthority().equals("FACTOR_PASSWORD"))
+                            .anyMatch(a -> a.getAuthority().equals("FACTOR_PASSWORD")) // ④
                     ))
-                .anyRequest().authenticated()                               // ⑤
+                .anyRequest().authenticated() // ⑤
             )
             .formLogin(form -> form
                 .loginPage("/login") // ⑥
@@ -40,7 +40,7 @@ public class SecurityConfig {
                 .loginPage("/ott/input")           // FACTOR_OTT不足時のリダイレクト先
                 .loginProcessingUrl("/login/ott")  // loginPage()設定で上書きされるため明示的に指定
                 .showDefaultSubmitPage(false)      // Spring Securityのデフォルト画面を無効化
-                .defaultSuccessUrl("/complete", true)
+                .defaultSuccessUrl("/complete")
             );
         return http.build();
     }
