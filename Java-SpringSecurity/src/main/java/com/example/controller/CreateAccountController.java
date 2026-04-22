@@ -59,7 +59,7 @@ public class CreateAccountController {
         String test = createAccountService.existsLginIdorEmail(userForm);
 
         if (test == "OK"){
-            
+            // OKで返さないようにしたい
         }
         
         // セッションに保存して確認画面に持っていく
