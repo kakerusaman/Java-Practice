@@ -141,6 +141,39 @@
                     </div>
                 </div>
 
+                <!-- 電話番号 -->
+                <div class="field-row">
+                    <div class="field-label-wrap">
+                        <span class="field-label">電話番号</span>
+                        <span class="required-badge">※必須</span>
+                    </div>
+                    <div class="field-input-wrap">
+                        <input type="text" name="phoneNumber" placeholder="例）09012345678" />
+                    </div>
+                </div>
+
+                <!-- 緊急連絡先氏名 -->
+                <div class="field-row">
+                    <div class="field-label-wrap">
+                        <span class="field-label">緊急連絡先氏名</span>
+                        <span class="required-badge">※必須</span>
+                    </div>
+                    <div class="field-input-wrap">
+                        <input type="text" name="emergencyName" placeholder="例）山田 花子" />
+                    </div>
+                </div>
+
+                <!-- 緊急連絡先電話番号 -->
+                <div class="field-row">
+                    <div class="field-label-wrap">
+                        <span class="field-label">緊急連絡先電話番号</span>
+                        <span class="required-badge">※必須</span>
+                    </div>
+                    <div class="field-input-wrap">
+                        <input type="text" name="emergencyPhone" placeholder="例）09087654321" />
+                    </div>
+                </div>
+
                 <div class="submit-wrap">
                     <button type="button" class="temp-save-btn">一時保存</button>
                     <button type="submit" class="submit-btn">次へ</button>
