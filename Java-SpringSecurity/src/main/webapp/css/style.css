@@ -500,10 +500,44 @@ input[type="email"]:focus {
     text-decoration: none;
 }
 
+/* ========== Zip Code ========== */
+.zip-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.zip-input-wrap input {
+    flex: 1;
+}
+
+.zip-search-btn {
+    flex-shrink: 0;
+    height: 44px;
+    padding: 0 16px;
+    border: 1.5px solid #1a2744;
+    border-radius: 3px;
+    background: #fff;
+    color: #1a2744;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.zip-search-btn:hover {
+    background: #1a2744;
+    color: #fff;
+}
+
 /* ========== Submit ========== */
 .submit-wrap {
     margin-top: 36px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 }
 
 .submit-btn {
@@ -529,4 +563,24 @@ input[type="email"]:focus {
 
 .submit-btn:active {
     transform: translateY(0);
+}
+
+.temp-save-btn {
+    display: inline-block;
+    width: 140px;
+    height: 52px;
+    border: 1.5px solid #1a2744;
+    border-radius: 3px;
+    background: #fff;
+    color: #1a2744;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.temp-save-btn:hover {
+    background: #f0f3f9;
 }

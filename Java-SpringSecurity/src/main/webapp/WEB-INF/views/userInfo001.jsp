@@ -14,6 +14,7 @@
 <body>
 
     <div class="main-container">
+        
 
         <!-- 左カラム -->
         <div class="left-col">
@@ -71,6 +72,20 @@
                     </div>
                 </div>
 
+                <!-- 郵便番号 -->
+                <div class="field-row">
+                    <div class="field-label-wrap">
+                        <span class="field-label">郵便番号</span>
+                        <span class="required-badge">※必須</span>
+                    </div>
+                    <div class="field-input-wrap">
+                        <div class="zip-input-wrap">
+                            <input type="text" name="zipCode" placeholder="例）1600022" />
+                            <button type="button" class="zip-search-btn">郵便番号検索</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 住所 -->
                 <div class="field-row">
                     <div class="field-label-wrap">
@@ -93,6 +108,28 @@
                     </div>
                 </div>
 
+                <!-- 住所フリガナ -->
+                <div class="field-row">
+                    <div class="field-label-wrap">
+                        <span class="field-label">住所フリガナ</span>
+                        <span class="required-badge">※必須</span>
+                    </div>
+                    <div class="field-input-wrap">
+                        <input type="text" name="addressKana" placeholder="例）トウキョウトシンジュククシンジュク" />
+                    </div>
+                </div>
+
+                <!-- 番地フリガナ -->
+                <div class="field-row">
+                    <div class="field-label-wrap">
+                        <span class="field-label">番地フリガナ</span>
+                        <span class="required-badge">※必須</span>
+                    </div>
+                    <div class="field-input-wrap">
+                        <input type="text" name="streetNumberKana" placeholder="例）イチノニノサン" />
+                    </div>
+                </div>
+
                 <!-- 生年月日 -->
                 <div class="field-row">
                     <div class="field-label-wrap">
@@ -105,7 +142,8 @@
                 </div>
 
                 <div class="submit-wrap">
-                    <button type="submit" class="submit-btn">登録する</button>
+                    <button type="button" class="temp-save-btn">一時保存</button>
+                    <button type="submit" class="submit-btn">次へ</button>
                 </div>
 
             </form>
