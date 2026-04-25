@@ -208,6 +208,32 @@
                     </div>
                 </div>
 
+                <!-- 暗証番号 -->
+                <div class="field-row">
+                    <div class="field-label-wrap">
+                        <span class="field-label">暗証番号</span>
+                        <span class="required-badge">※必須</span>
+                    </div>
+                    <div class="field-input-wrap">
+                        <input type="password" name="accountPin" id="accountPin"
+                               maxlength="4" placeholder="数字4桁を入力してください" />
+                        <span class="field-hint">数字4桁で設定してください</span>
+                    </div>
+                </div>
+
+                <!-- 暗証番号（確認） -->
+                <div class="field-row">
+                    <div class="field-label-wrap">
+                        <span class="field-label">暗証番号（確認）</span>
+                        <span class="required-badge">※必須</span>
+                    </div>
+                    <div class="field-input-wrap">
+                        <input type="password" name="accountPinConfirm" id="accountPinConfirm"
+                               maxlength="4" placeholder="もう一度入力してください" />
+                        <span class="field-error" id="pinError"></span>
+                    </div>
+                </div>
+
                 <div class="submit-wrap">
                     <button type="button" class="temp-save-btn">一時保存</button>
                     <button type="submit" class="submit-btn">次へ</button>
@@ -217,6 +243,28 @@
 
         </div>
     </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const pin = document.getElementById('accountPin').value;
+            const pinConfirm = document.getElementById('accountPinConfirm').value;
+            const pinError = document.getElementById('pinError');
+
+            if (pin !== pinConfirm) {
+                e.preventDefault();
+                pinError.textContent = '暗証番号が一致しません';
+                document.getElementById('accountPinConfirm').classList.add('input-error');
+            } else if (!/^\d{4}$/.test(pin)) {
+                e.preventDefault();
+                pinError.textContent = '暗証番号は数字4桁で入力してください';
+                document.getElementById('accountPin').classList.add('input-error');
+            } else {
+                pinError.textContent = '';
+                document.getElementById('accountPinConfirm').classList.remove('input-error');
+                document.getElementById('accountPin').classList.remove('input-error');
+            }
+        });
+    </script>
 
 </body>
 </html>
