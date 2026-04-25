@@ -333,6 +333,53 @@ input[type="email"]:focus {
     display: none;
 }
 
+/* ========== File Upload ========== */
+.file-upload-wrap {
+    display: none;
+}
+
+.file-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload-btn {
+    flex-shrink: 0;
+    height: 44px;
+    padding: 0 16px;
+    border: 1.5px solid #1a2744;
+    border-radius: 3px;
+    background: #fff;
+    color: #1a2744;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.file-upload-label:hover .file-upload-btn {
+    background: #1a2744;
+    color: #fff;
+}
+
+.file-name-text {
+    font-size: 13px;
+    color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* ========== Select ========== */
 .field-select {
     width: 100%;

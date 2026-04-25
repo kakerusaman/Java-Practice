@@ -70,6 +70,38 @@
                     </div>
                 </div>
 
+                <!-- ファイルアップロード（証明書種類選択後に表示） -->
+                <div id="fileUploadWrap" class="file-upload-wrap">
+                    <div class="field-row">
+                        <div class="field-label-wrap">
+                            <span class="field-label">証明書（表面）</span>
+                            <span class="required-badge">※必須</span>
+                        </div>
+                        <div class="field-input-wrap">
+                            <label class="file-upload-label">
+                                <input type="file" name="idFront" accept="image/*,.pdf" class="file-input" />
+                                <span class="file-upload-btn">ファイルを選択</span>
+                                <span class="file-name-text" id="frontFileName">選択されていません</span>
+                            </label>
+                            <span class="field-hint">JPG・PNG・PDF形式でアップロードしてください</span>
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-label-wrap">
+                            <span class="field-label">証明書（裏面）</span>
+                            <span class="required-badge">※必須</span>
+                        </div>
+                        <div class="field-input-wrap">
+                            <label class="file-upload-label">
+                                <input type="file" name="idBack" accept="image/*,.pdf" class="file-input" />
+                                <span class="file-upload-btn">ファイルを選択</span>
+                                <span class="file-name-text" id="backFileName">選択されていません</span>
+                            </label>
+                            <span class="field-hint">JPG・PNG・PDF形式でアップロードしてください</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 暗証番号（マイナンバーカード選択時のみ表示） -->
                 <div id="pinInputWrap" class="pin-input-wrap">
                     <div class="field-row">
@@ -135,9 +167,27 @@
 
     <script>
         function togglePinInput(select) {
+            const fileUploadWrap = document.getElementById('fileUploadWrap');
             const pinInputWrap = document.getElementById('pinInputWrap');
+
+            // 証明書の種類が選択されたらアップロード欄を表示
+            fileUploadWrap.style.display = select.value ? 'block' : 'none';
+
+            // マイナンバーカード選択時のみ暗証番号を表示
             pinInputWrap.style.display = select.value === 'myNumber' ? 'block' : 'none';
         }
+
+        // ファイル選択時にファイル名を表示
+        document.addEventListener('change', function(e) {
+            if (e.target.name === 'idFront') {
+                document.getElementById('frontFileName').textContent =
+                    e.target.files[0] ? e.target.files[0].name : '選択されていません';
+            }
+            if (e.target.name === 'idBack') {
+                document.getElementById('backFileName').textContent =
+                    e.target.files[0] ? e.target.files[0].name : '選択されていません';
+            }
+        });
     </script>
 
 </body>
