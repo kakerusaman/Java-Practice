@@ -282,6 +282,57 @@ input[type="email"]:focus {
     margin-top: 5px;
 }
 
+/* ========== Guidance Box ========== */
+.guidance-box {
+    background: #f0f3f9;
+    border-left: 4px solid #1a2744;
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+}
+
+.guidance-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a2744;
+    margin-bottom: 12px;
+}
+
+.guidance-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.guidance-list li {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+}
+
+.guidance-list li::before {
+    content: '・';
+    position: absolute;
+    left: 0;
+    color: #1a2744;
+}
+
+/* ========== Field Hint ========== */
+.field-hint {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 6px;
+}
+
+/* ========== Pin Input ========== */
+.pin-input-wrap {
+    display: none;
+}
+
 /* ========== Select ========== */
 .field-select {
     width: 100%;
