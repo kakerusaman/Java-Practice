@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -24,8 +25,7 @@
         <!-- 右カラム -->
         <div class="right-col">
 
-            <form action="<c:url value='/userInfo003'/>" method="post">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <form:form action="/userInfo003" method="post" modelAttribute="userInfo003Form">
 
                 <!-- 利用目的 -->
                 <div class="field-row">
@@ -36,26 +36,27 @@
                     <div class="field-input-wrap">
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" name="purpose" value="investment" />
+                                <form:checkbox path="purpose" value="investment" />
                                 <span class="checkbox-text">資産運用・投資</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="purpose" value="saving" />
+                                <form:checkbox path="purpose" value="saving" />
                                 <span class="checkbox-text">貯蓄・積立</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="purpose" value="loan" />
+                                <form:checkbox path="purpose" value="loan" />
                                 <span class="checkbox-text">ローン・借入</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="purpose" value="insurance" />
+                                <form:checkbox path="purpose" value="insurance" />
                                 <span class="checkbox-text">保険加入</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="purpose" value="other" />
+                                <form:checkbox path="purpose" value="other" />
                                 <span class="checkbox-text">その他</span>
                             </label>
                         </div>
+                        <form:errors path="purpose" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -68,22 +69,23 @@
                     <div class="field-input-wrap">
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" name="service" value="online" />
+                                <form:checkbox path="service" value="online" />
                                 <span class="checkbox-text">オンラインサービス</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="service" value="consulting" />
+                                <form:checkbox path="service" value="consulting" />
                                 <span class="checkbox-text">対面相談</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="service" value="phoneSupport" />
+                                <form:checkbox path="service" value="phoneSupport" />
                                 <span class="checkbox-text">電話サポート</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="service" value="app" />
+                                <form:checkbox path="service" value="app" />
                                 <span class="checkbox-text">アプリ利用</span>
                             </label>
                         </div>
+                        <form:errors path="service" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -96,18 +98,19 @@
                     <div class="field-input-wrap">
                         <div class="radio-group">
                             <label class="radio-label">
-                                <input type="radio" name="mailNotification" value="all" />
+                                <form:radiobutton path="mailNotification" value="all" />
                                 <span class="radio-text">すべて受信する</span>
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="mailNotification" value="important" />
+                                <form:radiobutton path="mailNotification" value="important" />
                                 <span class="radio-text">重要なお知らせのみ受信する</span>
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="mailNotification" value="none" />
+                                <form:radiobutton path="mailNotification" value="none" />
                                 <span class="radio-text">受信しない</span>
                             </label>
                         </div>
+                        <form:errors path="mailNotification" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -130,9 +133,10 @@
                     </div>
                     <div class="field-input-wrap">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="consentBankAccount" value="true" required />
+                            <form:checkbox path="consentBankAccount" />
                             <span class="checkbox-text">口座情報の取り扱いについて確認し、同意します</span>
                         </label>
+                        <form:errors path="consentBankAccount" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -143,7 +147,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="bankName" placeholder="例）〇〇銀行" />
+                        <form:input path="bankName" placeholder="例）〇〇銀行" />
+                        <form:errors path="bankName" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -154,7 +159,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="branchName" placeholder="例）新宿支店" />
+                        <form:input path="branchName" placeholder="例）新宿支店" />
+                        <form:errors path="branchName" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -167,14 +173,15 @@
                     <div class="field-input-wrap">
                         <div class="radio-group">
                             <label class="radio-label">
-                                <input type="radio" name="accountType" value="ordinary" />
+                                <form:radiobutton path="accountType" value="ordinary" />
                                 <span class="radio-text">普通</span>
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="accountType" value="checking" />
+                                <form:radiobutton path="accountType" value="checking" />
                                 <span class="radio-text">当座</span>
                             </label>
                         </div>
+                        <form:errors path="accountType" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -185,7 +192,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="accountNumber" placeholder="例）1234567" />
+                        <form:input path="accountNumber" placeholder="例）1234567" />
+                        <form:errors path="accountNumber" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -195,16 +203,17 @@
                         <span class="field-label">希望引き落とし日</span>
                     </div>
                     <div class="field-input-wrap">
-                        <select name="debitDay" class="field-select">
-                            <option value="">選択してください</option>
-                            <option value="1">1日</option>
-                            <option value="5">5日</option>
-                            <option value="10">10日</option>
-                            <option value="15">15日</option>
-                            <option value="20">20日</option>
-                            <option value="25">25日</option>
-                            <option value="end">末日</option>
-                        </select>
+                        <form:select path="debitDay" cssClass="field-select">
+                            <form:option value="" label="選択してください" />
+                            <form:option value="1" label="1日" />
+                            <form:option value="5" label="5日" />
+                            <form:option value="10" label="10日" />
+                            <form:option value="15" label="15日" />
+                            <form:option value="20" label="20日" />
+                            <form:option value="25" label="25日" />
+                            <form:option value="end" label="末日" />
+                        </form:select>
+                        <form:errors path="debitDay" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -215,9 +224,9 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="password" name="accountPin" id="accountPin"
-                               maxlength="4" placeholder="数字4桁を入力してください" />
+                        <form:password path="accountPin" id="accountPin" maxlength="4" placeholder="数字4桁を入力してください" />
                         <span class="field-hint">数字4桁で設定してください</span>
+                        <form:errors path="accountPin" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -228,9 +237,9 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="password" name="accountPinConfirm" id="accountPinConfirm"
-                               maxlength="4" placeholder="もう一度入力してください" />
+                        <form:password path="accountPinConfirm" id="accountPinConfirm" maxlength="4" placeholder="もう一度入力してください" />
                         <span class="field-error" id="pinError"></span>
+                        <form:errors path="accountPinConfirm" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -239,7 +248,7 @@
                     <button type="submit" class="submit-btn">次へ</button>
                 </div>
 
-            </form>
+            </form:form>
 
         </div>
     </div>

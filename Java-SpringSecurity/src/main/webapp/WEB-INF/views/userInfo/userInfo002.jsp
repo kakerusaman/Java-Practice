@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -17,15 +18,14 @@
 
         <!-- 左カラム -->
         <div class="left-col">
-            <p class="page-title">職業情報</p>
-            <p class="page-desc">職業に関する情報を入力してください。</p>
+            <p class="page-title">属性情報</p>
+            <p class="page-desc">属性に関する情報を入力してください。</p>
         </div>
 
         <!-- 右カラム -->
         <div class="right-col">
 
-            <form action="<c:url value='/userInfo002'/>" method="post">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <form:form action="/userInfo002" method="post" modelAttribute="userInfo002Form">
 
                 <!-- 職業 -->
                 <div class="field-row">
@@ -36,26 +36,27 @@
                     <div class="field-input-wrap">
                         <div class="radio-group">
                             <label class="radio-label">
-                                <input type="radio" name="occupation" value="employee" onchange="toggleOtherInput(this)" />
+                                <form:radiobutton path="occupation" value="employee" onchange="toggleOtherInput(this)" />
                                 <span class="radio-text">会社員</span>
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="occupation" value="selfEmployed" onchange="toggleOtherInput(this)" />
+                                <form:radiobutton path="occupation" value="selfEmployed" onchange="toggleOtherInput(this)" />
                                 <span class="radio-text">自営業</span>
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="occupation" value="student" onchange="toggleOtherInput(this)" />
+                                <form:radiobutton path="occupation" value="student" onchange="toggleOtherInput(this)" />
                                 <span class="radio-text">学生</span>
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="occupation" value="other" onchange="toggleOtherInput(this)" />
+                                <form:radiobutton path="occupation" value="other" onchange="toggleOtherInput(this)" />
                                 <span class="radio-text">その他</span>
                             </label>
                         </div>
                         <!-- その他選択時のみ表示 -->
                         <div id="otherInputWrap" class="other-input-wrap">
-                            <input type="text" name="occupationOther" placeholder="職業を入力してください" />
+                            <form:input path="occupationOther" placeholder="職業を入力してください" />
                         </div>
+                        <form:errors path="occupation" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -65,7 +66,8 @@
                         <span class="field-label">勤務先</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="workplace" placeholder="例）株式会社〇〇" />
+                        <form:input path="workplace" placeholder="例）株式会社〇〇" />
+                        <form:errors path="workplace" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -75,15 +77,16 @@
                         <span class="field-label">年収</span>
                     </div>
                     <div class="field-input-wrap">
-                        <select name="annualIncome" class="field-select">
-                            <option value="">選択してください</option>
-                            <option value="under2m">200万円未満</option>
-                            <option value="2m_4m">200万円〜400万円未満</option>
-                            <option value="4m_6m">400万円〜600万円未満</option>
-                            <option value="6m_8m">600万円〜800万円未満</option>
-                            <option value="8m_10m">800万円〜1000万円未満</option>
-                            <option value="over10m">1000万円以上</option>
-                        </select>
+                        <form:select path="annualIncome" cssClass="field-select">
+                            <form:option value="" label="選択してください" />
+                            <form:option value="under2m" label="200万円未満" />
+                            <form:option value="2m_4m" label="200万円〜400万円未満" />
+                            <form:option value="4m_6m" label="400万円〜600万円未満" />
+                            <form:option value="6m_8m" label="600万円〜800万円未満" />
+                            <form:option value="8m_10m" label="800万円〜1000万円未満" />
+                            <form:option value="over10m" label="1000万円以上" />
+                        </form:select>
+                        <form:errors path="annualIncome" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -95,30 +98,31 @@
                     <div class="field-input-wrap">
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" name="familyStructure" value="single" />
+                                <form:checkbox path="familyStructure" value="single" />
                                 <span class="checkbox-text">単身</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="familyStructure" value="coupleOnly" />
+                                <form:checkbox path="familyStructure" value="coupleOnly" />
                                 <span class="checkbox-text">夫婦のみ</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="familyStructure" value="coupleWithChild" />
+                                <form:checkbox path="familyStructure" value="coupleWithChild" />
                                 <span class="checkbox-text">夫婦＋子</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="familyStructure" value="singleParent" />
+                                <form:checkbox path="familyStructure" value="singleParent" />
                                 <span class="checkbox-text">一人親＋子</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="familyStructure" value="withParents" />
+                                <form:checkbox path="familyStructure" value="withParents" />
                                 <span class="checkbox-text">親と同居</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="familyStructure" value="other" />
+                                <form:checkbox path="familyStructure" value="other" />
                                 <span class="checkbox-text">その他</span>
                             </label>
                         </div>
+                        <form:errors path="familyStructure" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -127,7 +131,7 @@
                     <button type="submit" class="submit-btn">次へ</button>
                 </div>
 
-            </form>
+            </form:form>
 
         </div>
     </div>

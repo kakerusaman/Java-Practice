@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -35,8 +36,7 @@
                 </ul>
             </div>
 
-            <form action="<c:url value='/userInfo004'/>" method="post">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <form:form action="/userInfo004" method="post" modelAttribute="userInfo004Form" enctype="multipart/form-data">
 
                 <!-- 身分証明書提出への同意 -->
                 <div class="field-row">
@@ -46,9 +46,10 @@
                     </div>
                     <div class="field-input-wrap">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="consentSubmit" value="true" required />
+                            <form:checkbox path="consentSubmit" />
                             <span class="checkbox-text">身分証明書の提出に同意します</span>
                         </label>
+                        <form:errors path="consentSubmit" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -59,14 +60,15 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <select name="idType" class="field-select" onchange="togglePinInput(this)">
-                            <option value="">選択してください</option>
-                            <option value="driverLicense">運転免許証</option>
-                            <option value="passport">パスポート</option>
-                            <option value="myNumber">マイナンバーカード</option>
-                            <option value="healthInsurance">健康保険証</option>
-                            <option value="residenceCard">在留カード</option>
-                        </select>
+                        <form:select path="idType" cssClass="field-select" onchange="togglePinInput(this)">
+                            <form:option value="" label="選択してください" />
+                            <form:option value="driverLicense" label="運転免許証" />
+                            <form:option value="passport" label="パスポート" />
+                            <form:option value="myNumber" label="マイナンバーカード" />
+                            <form:option value="healthInsurance" label="健康保険証" />
+                            <form:option value="residenceCard" label="在留カード" />
+                        </form:select>
+                        <form:errors path="idType" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -110,8 +112,9 @@
                             <span class="required-badge">※必須</span>
                         </div>
                         <div class="field-input-wrap">
-                            <input type="password" name="pin" placeholder="暗証番号を入力してください" />
+                            <form:password path="pin" placeholder="暗証番号を入力してください" />
                             <span class="field-hint">数字4桁の暗証番号を入力してください</span>
+                            <form:errors path="pin" cssClass="field-error" />
                         </div>
                     </div>
                 </div>
@@ -123,7 +126,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="idNumber" placeholder="証明書に記載の番号を入力してください" />
+                        <form:input path="idNumber" placeholder="証明書に記載の番号を入力してください" />
+                        <form:errors path="idNumber" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -134,7 +138,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="date" name="expiryDate" />
+                        <form:input type="date" path="expiryDate" />
+                        <form:errors path="expiryDate" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -146,12 +151,13 @@
                     </div>
                     <div class="field-input-wrap">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="consentTerms" value="true" required />
+                            <form:checkbox path="consentTerms" />
                             <span class="checkbox-text">
                                 <a href="#" class="login-link">利用規約</a>および
                                 <a href="#" class="login-link">プライバシーポリシー</a>に同意します
                             </span>
                         </label>
+                        <form:errors path="consentTerms" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -160,7 +166,7 @@
                     <button type="submit" class="submit-btn">次へ</button>
                 </div>
 
-            </form>
+            </form:form>
 
         </div>
     </div>

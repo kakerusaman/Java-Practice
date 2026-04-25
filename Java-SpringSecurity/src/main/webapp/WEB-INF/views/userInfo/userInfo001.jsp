@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,6 @@
 <body>
 
     <div class="main-container">
-        
 
         <!-- 左カラム -->
         <div class="left-col">
@@ -25,8 +25,7 @@
         <!-- 右カラム -->
         <div class="right-col">
 
-            <form action="<c:url value='/userInfo'/>" method="post">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <form:form action="/userInfo001" method="post" modelAttribute="userInfo001Form">
 
                 <!-- 苗字 -->
                 <div class="field-row">
@@ -35,7 +34,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="lastName" placeholder="例）山田" />
+                        <form:input path="lastName" placeholder="例）山田" />
+                        <form:errors path="lastName" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -46,7 +46,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="firstName" placeholder="例）太郎" />
+                        <form:input path="firstName" placeholder="例）太郎" />
+                        <form:errors path="firstName" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -57,7 +58,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="lastNameKana" placeholder="例）ヤマダ" />
+                        <form:input path="lastNameKana" placeholder="例）ヤマダ" />
+                        <form:errors path="lastNameKana" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -68,7 +70,33 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="firstNameKana" placeholder="例）タロウ" />
+                        <form:input path="firstNameKana" placeholder="例）タロウ" />
+                        <form:errors path="firstNameKana" cssClass="field-error" />
+                    </div>
+                </div>
+
+                <!-- 性別 -->
+                <div class="field-row">
+                    <div class="field-label-wrap">
+                        <span class="field-label">性別</span>
+                        <span class="required-badge">※必須</span>
+                    </div>
+                    <div class="field-input-wrap">
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <form:radiobutton path="gender" value="male" />
+                                <span class="radio-text">男性</span>
+                            </label>
+                            <label class="radio-label">
+                                <form:radiobutton path="gender" value="female" />
+                                <span class="radio-text">女性</span>
+                            </label>
+                            <label class="radio-label">
+                                <form:radiobutton path="gender" value="other" />
+                                <span class="radio-text">その他</span>
+                            </label>
+                        </div>
+                        <form:errors path="gender" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -80,9 +108,10 @@
                     </div>
                     <div class="field-input-wrap">
                         <div class="zip-input-wrap">
-                            <input type="text" name="zipCode" placeholder="例）1600022" />
+                            <form:input path="zipCode" placeholder="例）1600022" />
                             <button type="button" class="zip-search-btn">郵便番号検索</button>
                         </div>
+                        <form:errors path="zipCode" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -93,7 +122,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="address" placeholder="例）東京都新宿区新宿" />
+                        <form:input path="address" placeholder="例）東京都新宿区新宿" />
+                        <form:errors path="address" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -104,7 +134,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="streetNumber" placeholder="例）1-2-3" />
+                        <form:input path="streetNumber" placeholder="例）1-2-3" />
+                        <form:errors path="streetNumber" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -115,7 +146,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="addressKana" placeholder="例）トウキョウトシンジュククシンジュク" />
+                        <form:input path="addressKana" placeholder="例）トウキョウトシンジュククシンジュク" />
+                        <form:errors path="addressKana" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -126,7 +158,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="streetNumberKana" placeholder="例）イチノニノサン" />
+                        <form:input path="streetNumberKana" placeholder="例）イチノニノサン" />
+                        <form:errors path="streetNumberKana" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -137,7 +170,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="date" name="birthDate" />
+                        <form:input type="date" path="birthDate" />
+                        <form:errors path="birthDate" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -148,7 +182,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="phoneNumber" placeholder="例）09012345678" />
+                        <form:input path="phoneNumber" placeholder="例）09012345678" />
+                        <form:errors path="phoneNumber" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -159,7 +194,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="emergencyName" placeholder="例）山田 花子" />
+                        <form:input path="emergencyName" placeholder="例）山田 花子" />
+                        <form:errors path="emergencyName" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -170,7 +206,8 @@
                         <span class="required-badge">※必須</span>
                     </div>
                     <div class="field-input-wrap">
-                        <input type="text" name="emergencyPhone" placeholder="例）09087654321" />
+                        <form:input path="emergencyPhone" placeholder="例）09087654321" />
+                        <form:errors path="emergencyPhone" cssClass="field-error" />
                     </div>
                 </div>
 
@@ -179,7 +216,7 @@
                     <button type="submit" class="submit-btn">次へ</button>
                 </div>
 
-            </form>
+            </form:form>
 
         </div>
     </div>
