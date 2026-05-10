@@ -9,11 +9,18 @@
  * @param {Function} [options.onError]      - エラー時のコールバック (status, message) => {}
  */
 async function ajaxRequest({ url, method = 'GET', data = null, onSuccess, onError }) {
+    const headers = { 'Content-Type': 'application/json' };
+
+    // Spring Security の CSRF トークンをメタタグから自動付与
+    const csrfTokenMeta = document.querySelector('meta[name="_csrf"]');
+    const csrfHeaderMeta = document.querySelector('meta[name="_csrf_header"]');
+    if (csrfTokenMeta && csrfHeaderMeta) {
+        headers[csrfHeaderMeta.getAttribute('content')] = csrfTokenMeta.getAttribute('content');
+    }
+
     const options = {
         method,
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers,
     };
 
     if (data) {

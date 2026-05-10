@@ -16,7 +16,7 @@
             <h1 class="login-title">マイページ</h1>
 
             <div class="submit-wrap" style="margin-top:28px;">
-                <c:url value="/userInfo001" var="userInfo001Url"/>                                                                                                                                                                     
+                <c:url value="/userInfo/userInfo001" var="userInfo001Url"/>                                                                                                                                                                     
                 <button type="button" onclick="location.href='${userInfo001Url}'">本人情報入力</button>  
             </div>
 

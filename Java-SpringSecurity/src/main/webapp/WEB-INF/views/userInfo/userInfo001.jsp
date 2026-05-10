@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <script src="<c:url value='/js/Ajax.js'/>"></script>
 </head>
 <body>
 
@@ -220,6 +223,30 @@
 
         </div>
     </div>
+
+
+<script>
+document.querySelector('.temp-save-btn').addEventListener('click', function () {
+    const form = document.querySelector('form');
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach(function (value, key) {
+        if (key !== '_csrf') data[key] = value;
+    });
+
+    ajaxRequest({
+        url: '/api/userInfo001/tempSave',
+        method: 'POST',
+        data: data,
+        onSuccess: function (result) {
+            alert(result.message);
+        },
+        onError: function (status, message) {
+            alert('一時保存に失敗しました: ' + message);
+        }
+    });
+});
+</script>
 
 </body>
 </html>
