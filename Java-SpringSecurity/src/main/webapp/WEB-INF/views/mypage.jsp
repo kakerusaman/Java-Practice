@@ -20,6 +20,11 @@
                 <button type="button" onclick="location.href='${userInfo001Url}'">本人情報入力</button>  
             </div>
 
+            <div class="submit-wrap" style="margin-top:28px;">
+                <c:url value="/JSONPlaceholder" var="JSONPlaceholder"/>                                                                                                                                                                     
+                <button type="button" onclick="location.href='${JSONPlaceholder}'">JSONPlaceholder</button>  
+            </div>
+
         </div>
     </div>
 
